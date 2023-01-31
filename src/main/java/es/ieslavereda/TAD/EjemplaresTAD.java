@@ -105,7 +105,7 @@ public class EjemplaresTAD {
 
         @Override
         public String toString(){
-            return String.valueOf(info)+((next!=null)?""+next:"");
+            return String.valueOf(info)+((next!=null)?"\n "+next:"");
         }
     }
 }

@@ -45,7 +45,7 @@ public class Ejemplar {
 
     @Override
     public String toString(){
-        return "Ejemplar: \n ISBN: " + isbn +"\n Codigo de Ejemplar: " +codigoEjemplar;
+        return "Ejemplar{ \n ISBN: " + isbn +"\n Codigo de Ejemplar: " +codigoEjemplar+"}\n";
     }
 
     @Override

@@ -24,6 +24,11 @@ public class Publicacion {
         return editorial;
     }
 
+    @Override
+    public String toString(){
+        return " Editorial: "+ editorial+"\n Numero de paginas: "+ numeroPaginas + "\n Color: "+ color +"\n";
+    }
+
     enum Color{
         COLOR("color"),
         BLANCO_Y_NEGRO("blanco y negro");

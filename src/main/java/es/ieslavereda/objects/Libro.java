@@ -19,6 +19,7 @@ public class Libro extends Publicacion{
         this.autor = autor;
         this.titulo = titulo;
         this.isbn = isbn;
+        this.ejemplares = new EjemplaresTAD();
 
     }
 
@@ -40,6 +41,12 @@ public class Libro extends Publicacion{
         ejemplares.addHead(new Ejemplar(isbn, ejemplares.getSize()));
     }
 
+
+    @Override
+    public String toString(){
+        return "Libro{\n"+super.toString()+
+                " Autor:"+autor+ "\n Titulo: " + titulo + "\n ISBN: " + isbn+"\n "+ejemplares.toString();
+    }
 
 
 }
