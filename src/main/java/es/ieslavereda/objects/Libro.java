@@ -1,5 +1,7 @@
 package es.ieslavereda.objects;
 
+import es.ieslavereda.TAD.EjemplaresTAD;
+
 public class Libro extends Publicacion{
 
     private String autor;
@@ -21,8 +23,21 @@ public class Libro extends Publicacion{
     }
 
 
+    public boolean prestarLibro(int posicion,Cliente cliente){
+        if (ejemplares.get(posicion)==null){
+            return false;
+        }else {
+            ejemplares.get(posicion).giveToClient(cliente);
+            ejemplares.change(posicion,cliente);
+            return true;
+        }
+
+
+    }
+
+
     public void addEjemplar(){
-        ejemplares.addHead(isbn);
+        ejemplares.addHead(new Ejemplar(isbn, ejemplares.getSize()));
     }
 
 

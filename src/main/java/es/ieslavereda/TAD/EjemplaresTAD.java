@@ -1,4 +1,7 @@
-package es.ieslavereda.objects;
+package es.ieslavereda.TAD;
+
+import es.ieslavereda.objects.Cliente;
+import es.ieslavereda.objects.Ejemplar;
 
 public class EjemplaresTAD {
     private int size;
@@ -12,8 +15,8 @@ public class EjemplaresTAD {
     }
 
 
-    public void addHead(String isbn){
-        Nodo nodo = new Nodo(new Ejemplar(isbn, size+1));
+    public void addHead(Ejemplar ejemplar){
+        Nodo nodo = new Nodo(ejemplar);
         if (size ==0){
             head = nodo;
             tail = nodo;
@@ -23,21 +26,35 @@ public class EjemplaresTAD {
             head =  nodo;
         }
         size++;
-
     }
 
-    public EjemplaresTAD getDisponible(){
-        if (size>0) {
-            EjemplaresTAD l = new EjemplaresTAD();
-            Nodo aux = head;
-            while (aux != null) {
-                if (!aux.getInfo().isPrestado()){
-                    l.addHead(aux.getInfo());
+
+    public Ejemplar get(int posicion){
+        if (posicion < 0 || posicion >= size){
+            return null;
+        }else {
+                Nodo aux = tail;
+                while (posicion>0){
+                    aux = aux.getPrevius();
+                    posicion--;
                 }
-                aux = aux.getNext();
-            }
+                if (aux.getInfo().isPrestado()){
+                    return null;
+                }else {
+                    return aux.getInfo();
+                }
         }
-        return null;
+    }
+
+    public void change(int posicion, Cliente cliente){
+        if (posicion > 0 && posicion < size){
+            Nodo aux  = head;
+            while (posicion>0){
+                aux = aux.getNext();
+                posicion--;
+            }
+            aux.getInfo().giveToClient(cliente);
+        }
     }
 
 

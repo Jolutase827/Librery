@@ -20,11 +20,23 @@ public class Ejemplar {
         return prestado;
     }
 
-    public void giveBack(Ejemplar ejemplar){
-        if (ejemplar.equals(this)){
+    public boolean giveBack(){
+        if (prestado){
             prestado = false;
             cliente = null;
+            return true;
         }
+        return false;
+    }
+
+    public boolean giveToClient(Cliente cliente){
+        if (prestado){
+            return false;
+        }
+        prestado = true;
+        this.cliente = cliente;
+        return prestado;
+
     }
 
     public Cliente getCliente() {
