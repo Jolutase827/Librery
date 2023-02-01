@@ -14,15 +14,30 @@ public class Cliente {
         this.ejemplares = new EjemplaresTAD();
     }
 
-
-
-
     public void setDni(String dni) {
         this.dni = dni;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public boolean pedirEjemplar(String isbn){
+
+        if (!llegaLimitePedidos(ejemplares))
+            if (ejemplar.notPrestado()){
+                ejemplar.addPrestamo(this);
+                ejemplares.addHead(ejemplar);
+                return true;
+            }
+
+        return false;
+
+
+    }
+
+    public static boolean llegaLimitePedidos(EjemplaresTAD ejemplares){
+        return ejemplares.getSize()>=3;
     }
 
     @Override

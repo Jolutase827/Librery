@@ -32,12 +32,6 @@ public class EjemplaresTAD {
 
 
 
-    private static boolean notPrestado(Nodo nodo){
-        return nodo.getInfo().notPrestado();
-    }
-
-
-
 
 
 

@@ -23,17 +23,29 @@ public class Libro extends Publicacion{
 
     }
 
+    public String getIsbn() {
+        return isbn;
+    }
 
+    public EjemplaresTAD getEjemplares() {
+        return ejemplares;
+    }
 
     public void addEjemplar(){
-        ejemplares.addHead(new Ejemplar(isbn, ejemplares.getSize()));
+        ejemplares.addHead(new Ejemplar(this, ejemplares.getSize()));
     }
+
 
 
     @Override
     public String toString(){
         return "Libro{\n"+super.toString()+
                 " Autor:"+autor+ "\n Titulo: " + titulo + "\n ISBN: " + isbn+"\n "+ejemplares.toString();
+    }
+
+    @Override
+    public String imprimir(){
+        return ejemplares.imprimir();
     }
 
 

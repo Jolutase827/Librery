@@ -1,4 +1,5 @@
 package es.ieslavereda.TAD;
+import es.ieslavereda.objects.IPublicacion;
 import es.ieslavereda.objects.Prestamo;
 
 public class PrestamosTAD {

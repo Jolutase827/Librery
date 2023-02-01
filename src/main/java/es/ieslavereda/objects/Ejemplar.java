@@ -5,13 +5,14 @@ import es.ieslavereda.TAD.PrestamosTAD;
 public class Ejemplar {
 
     private PrestamosTAD listaPrestamos;
-    private String isbn;
+    private Libro libro;
+
 
     private int codigoEjemplar;
 
 
-    public Ejemplar(String isbn, int codigoEjemplar){
-        this.isbn =isbn;
+    public Ejemplar(Libro libro, int codigoEjemplar){
+        this.libro = libro;
         this.listaPrestamos = new PrestamosTAD();
         this.codigoEjemplar = codigoEjemplar;
     }
@@ -27,18 +28,21 @@ public class Ejemplar {
         return false;
     }
 
+    public Libro getLibro() {
+        return libro;
+    }
 
 
     @Override
     public String toString(){
-        return "Ejemplar{ \n ISBN: " + isbn +"\n Codigo de Ejemplar: " +codigoEjemplar+"\n"+((listaPrestamos.getSize()==0)?" Prestamos: Ejemplar no prestado":listaPrestamos)+"}\n";
+        return "Ejemplar{ \n ISBN: " + libro.getIsbn() +"\n Codigo de Ejemplar: " +codigoEjemplar+"\n"+((listaPrestamos.getSize()==0)?" Prestamos: Ejemplar no prestado":listaPrestamos)+"}\n";
     }
 
     @Override
     public boolean equals(Object obj){
         if (obj instanceof Ejemplar){
             Ejemplar ej = (Ejemplar) obj;
-            return ej.isbn.equals(this.isbn)&&ej.codigoEjemplar==this.codigoEjemplar&&ej.listaPrestamos.equals(listaPrestamos);
+            return ej.libro.equals(this.libro)&&ej.codigoEjemplar==this.codigoEjemplar&&ej.listaPrestamos.equals(listaPrestamos);
         }
         return false;
     }

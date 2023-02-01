@@ -1,6 +1,6 @@
 package es.ieslavereda.objects;
 
-public abstract class Publicacion {
+public abstract class Publicacion implements IPublicacion{
     private String editorial;
     private int numeroPaginas;
 
@@ -28,6 +28,9 @@ public abstract class Publicacion {
     public String toString(){
         return " Editorial: "+ editorial+"\n Numero de paginas: "+ numeroPaginas + "\n Color: "+ color +"\n";
     }
+
+    @Override
+    public abstract String imprimir();
 
     enum Color{
         COLOR("color"),
