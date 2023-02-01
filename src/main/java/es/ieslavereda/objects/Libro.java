@@ -25,14 +25,14 @@ public class Libro extends Publicacion{
 
 
     public boolean prestarLibro(int posicion,Cliente cliente){
-        if (ejemplares.get(posicion)==null){
+        if (ejemplares.giveEjemplar(posicion,cliente)==null){
             return false;
-        }else {
-            ejemplares.get(posicion).giveToClient(cliente);
-            ejemplares.change(posicion,cliente);
+        }else {;
             return true;
         }
+    }
 
+    public boolean devolverLibro(Ejemplar ejemplar){
 
     }
 

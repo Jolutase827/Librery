@@ -9,6 +9,11 @@ public class Cliente {
         this.nombre =nombre;
     }
 
+
+    @Override
+    public String toString(){
+        return " Cliente{ Nombre: "+nombre+", DNI: "+dni+"}\n";
+    }
     @Override
     public boolean equals(Object obj){
         if (obj instanceof Cliente){

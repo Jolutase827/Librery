@@ -29,7 +29,7 @@ public class EjemplaresTAD {
     }
 
 
-    public Ejemplar get(int posicion){
+    public Ejemplar giveEjemplar(int posicion,Cliente cliente){
         if (posicion < 0 || posicion >= size){
             return null;
         }else {
@@ -38,7 +38,7 @@ public class EjemplaresTAD {
                     aux = aux.getPrevius();
                     posicion--;
                 }
-                if (aux.getInfo().isPrestado()){
+                if (!aux.getInfo().giveToClient(cliente)){
                     return null;
                 }else {
                     return aux.getInfo();
@@ -46,16 +46,6 @@ public class EjemplaresTAD {
         }
     }
 
-    public void change(int posicion, Cliente cliente){
-        if (posicion > 0 && posicion < size){
-            Nodo aux  = head;
-            while (posicion>0){
-                aux = aux.getNext();
-                posicion--;
-            }
-            aux.getInfo().giveToClient(cliente);
-        }
-    }
 
 
 
