@@ -1,5 +1,5 @@
 package es.ieslavereda.objects;
-
+import com.sun.org.apache.bcel.internal.generic.FADD;
 import es.ieslavereda.TAD.EjemplaresTAD;
 
 public class Libro extends Publicacion{
@@ -24,18 +24,6 @@ public class Libro extends Publicacion{
     }
 
 
-    public boolean prestarLibro(int posicion,Cliente cliente){
-        if (ejemplares.giveEjemplar(posicion,cliente)==null){
-            return false;
-        }else {;
-            return true;
-        }
-    }
-
-    public boolean devolverLibro(Ejemplar ejemplar){
-
-    }
-
 
     public void addEjemplar(){
         ejemplares.addHead(new Ejemplar(isbn, ejemplares.getSize()));
@@ -47,6 +35,7 @@ public class Libro extends Publicacion{
         return "Libro{\n"+super.toString()+
                 " Autor:"+autor+ "\n Titulo: " + titulo + "\n ISBN: " + isbn+"\n "+ejemplares.toString();
     }
+
 
 
 }

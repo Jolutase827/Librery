@@ -2,6 +2,7 @@ package es.ieslavereda.TAD;
 
 import es.ieslavereda.objects.Cliente;
 import es.ieslavereda.objects.Ejemplar;
+import es.ieslavereda.objects.Libro;
 
 public class EjemplaresTAD {
     private int size;
@@ -29,22 +30,12 @@ public class EjemplaresTAD {
     }
 
 
-    public Ejemplar giveEjemplar(int posicion,Cliente cliente){
-        if (posicion < 0 || posicion >= size){
-            return null;
-        }else {
-                Nodo aux = tail;
-                while (posicion>0){
-                    aux = aux.getPrevius();
-                    posicion--;
-                }
-                if (!aux.getInfo().giveToClient(cliente)){
-                    return null;
-                }else {
-                    return aux.getInfo();
-                }
-        }
+
+
+    private static boolean notPrestado(Nodo nodo){
+        return nodo.getInfo().notPrestado();
     }
+
 
 
 
@@ -59,6 +50,14 @@ public class EjemplaresTAD {
         return "Total ejemplares{ size: " +size+"\n Ejemplares: "+ head;
     }
 
+    @Override
+    public boolean equals(Object obj){
+        if (obj instanceof EjemplaresTAD){
+            EjemplaresTAD ejemplaresTAD = (EjemplaresTAD) obj;
+            return (ejemplaresTAD.size ==size&&head.equals(ejemplaresTAD.head)&&tail.equals(ejemplaresTAD.head));
+        }
+        return false;
+    }
 
 
 
@@ -96,6 +95,17 @@ public class EjemplaresTAD {
         @Override
         public String toString(){
             return String.valueOf(info)+((next!=null)?"\n "+next:"");
+        }
+
+        @Override
+        public boolean equals(Object obj){
+            if (obj instanceof Nodo){
+                Nodo nodo = (Nodo) obj;
+                return (nodo.info.equals(info)
+                        &&nodo.next.equals(next)
+                        &&nodo.previus.equals(previus));
+            }
+            return false;
         }
     }
 }

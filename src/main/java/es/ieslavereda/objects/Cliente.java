@@ -1,14 +1,29 @@
 package es.ieslavereda.objects;
 
+import es.ieslavereda.TAD.EjemplaresTAD;
+
 public class Cliente {
     private String nombre;
     private String dni;
 
+    private EjemplaresTAD ejemplares;
+
     public Cliente(String nombre, String dni){
         this.dni = dni;
         this.nombre =nombre;
+        this.ejemplares = new EjemplaresTAD();
     }
 
+
+
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     @Override
     public String toString(){

@@ -1,6 +1,6 @@
 package es.ieslavereda.objects;
 
-public class Publicacion {
+public abstract class Publicacion {
     private String editorial;
     private int numeroPaginas;
 
