@@ -43,6 +43,9 @@ public class EjemplaresTAD {
     public String toString(){
         return "Total ejemplares{ size: " +size+"\n Ejemplares: "+ head;
     }
+    public String imprimir(){
+        return head.toString();
+    }
 
     @Override
     public boolean equals(Object obj){
@@ -88,7 +91,7 @@ public class EjemplaresTAD {
 
         @Override
         public String toString(){
-            return String.valueOf(info)+((next!=null)?"\n "+next:"");
+            return info.imprimir()+((next!=null)?"\n "+next:"");
         }
 
         @Override

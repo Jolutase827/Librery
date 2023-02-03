@@ -22,6 +22,14 @@ public class Revista extends Publicacion{
         return "Revista{ Nombre: "+ nombre+", Fecha de publicación: " + diaPublicacion+"\n";
     }
 
+    @Override
+    public boolean equals(Object obj){
+        if (obj instanceof Revista){
+            Revista revista = (Revista) obj;
+            return revista.nombre.equals(nombre)&&revista.tematica.equals(tematica)&&revista.periodicidad.equals(periodicidad)&&revista.diaPublicacion.equals(diaPublicacion);
+        }
+        return false;
+    }
 
     enum Periodicidad{
         SEMANAL,

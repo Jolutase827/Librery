@@ -38,6 +38,10 @@ public class Ejemplar {
         return "Ejemplar{ \n ISBN: " + libro.getIsbn() +"\n Codigo de Ejemplar: " +codigoEjemplar+"\n"+((listaPrestamos.getSize()==0)?" Prestamos: Ejemplar no prestado":listaPrestamos)+"}\n";
     }
 
+
+    public String imprimir(){
+        return "Ejemplar{ \n ISBN: " +libro.getIsbn() +"\n Codigo de Ejemplar: " + codigoEjemplar+"}";
+    }
     @Override
     public boolean equals(Object obj){
         if (obj instanceof Ejemplar){

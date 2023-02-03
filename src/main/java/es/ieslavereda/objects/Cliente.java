@@ -6,37 +6,46 @@ public class Cliente {
     private String nombre;
     private String dni;
 
+    private boolean activo;
+
     private EjemplaresTAD ejemplares;
+
+    public String getDni() {
+        return dni;
+    }
 
     public Cliente(String nombre, String dni){
         this.dni = dni;
         this.nombre =nombre;
         this.ejemplares = new EjemplaresTAD();
+        activo = true;
     }
 
-    public void setDni(String dni) {
+    public void cambiarNombreyDNi(String dni,String nombre) {
         this.dni = dni;
-    }
-
-    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public boolean pedirEjemplar(String isbn){
 
-        if (!llegaLimitePedidos(ejemplares))
-            if (ejemplar.notPrestado()){
-                ejemplar.addPrestamo(this);
-                ejemplares.addHead(ejemplar);
-                return true;
-            }
-
+    public boolean darBaja(){
+        if (activo){
+            activo = false;
+            return true;
+        }
         return false;
-
-
     }
 
-    public static boolean llegaLimitePedidos(EjemplaresTAD ejemplares){
+
+    public boolean darAlta(){
+        if (activo){
+            return false;
+        }
+        activo = true;
+        return true;
+    }
+
+
+    public boolean llegaLimitePedidos(){
         return ejemplares.getSize()>=3;
     }
 
@@ -52,4 +61,6 @@ public class Cliente {
         }
         return false;
     }
+
+
 }

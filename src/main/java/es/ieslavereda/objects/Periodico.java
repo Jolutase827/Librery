@@ -17,6 +17,14 @@ public class Periodico extends Publicacion{
     public String imprimir(){
         return "Periodico{ Nombre: "+ nombre + ", Fecha de publicación: "+ diaPublicacion;
     }
+    @Override
+    public boolean equals(Object obj){
+        if (obj instanceof Periodico){
+            Periodico periodico = (Periodico) obj;
+            return periodico.nombre.equals(nombre)&&periodico.diaPublicacion.equals(diaPublicacion);
+        }
+        return false;
+    }
 
 
 

@@ -47,7 +47,13 @@ public class Libro extends Publicacion{
     public String imprimir(){
         return ejemplares.imprimir();
     }
-
-
+    @Override
+    public boolean equals(Object obj){
+        if (obj instanceof Libro){
+            Libro libro = (Libro) obj;
+            return libro.autor.equals(autor)&&libro.isbn.equals(isbn)&&libro.ejemplares.equals(ejemplares);
+        }
+        return false;
+    }
 
 }
