@@ -7,14 +7,14 @@ public class Library {
     private PublicacionTAD libros;
     private PublicacionTAD revistas;
 
-    private PublicacionTAD periodico;
+    private PublicacionTAD periodicos;
 
     private ClienteTAD clientes;
 
     public Library(){
         libros = new PublicacionTAD();
         revistas = new PublicacionTAD();
-        periodico = new PublicacionTAD();
+        periodicos = new PublicacionTAD();
         clientes = new ClienteTAD();
     }
 
@@ -28,7 +28,7 @@ public class Library {
             return true;
         }
         if (publicacion instanceof Periodico){
-            periodico.addHead(publicacion);
+            periodicos.addHead(publicacion);
             return true;
         }
         if (publicacion instanceof Revista){
@@ -44,12 +44,36 @@ public class Library {
 
         }
         if (publicacion instanceof Periodico){
-            return periodico.bajaPublicacion(publicacion);
+            return periodicos.bajaPublicacion(publicacion);
 
         }
         if (publicacion instanceof Revista){
             return revistas.bajaPublicacion(publicacion);
         }
         return false;
+    }
+
+    public ClienteTAD getClientes() {
+        return clientes;
+    }
+
+    public PublicacionTAD getLibros() {
+        return libros;
+    }
+
+    public PublicacionTAD getPeriodicos() {
+        return periodicos;
+    }
+
+    public PublicacionTAD getRevistas() {
+        return revistas;
+    }
+
+    @Override
+    public String toString(){
+        return "Libros{ "+ libros+"}\n"+
+                "Periodicos{ "+ periodicos + "}\n"+
+                "Revistas{ "+revistas +"}\n"+
+                "Clientes{ " +clientes+"}";
     }
 }

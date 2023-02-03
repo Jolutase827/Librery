@@ -1,6 +1,9 @@
 package es.ieslavereda.TAD;
 
+import es.ieslavereda.objects.Libro;
+import es.ieslavereda.objects.Periodico;
 import es.ieslavereda.objects.Publicacion;
+import es.ieslavereda.objects.Revista;
 
 public class PublicacionTAD {
     private int size;
@@ -72,6 +75,15 @@ public class PublicacionTAD {
 
         @Override
         public String toString(){
+            if (info instanceof Libro){
+                return ((Libro)info).imprimir() +((next!=null)?"\n"+ next:"");
+            }
+            if (info instanceof Revista){
+                return ((Revista)info).imprimir() +((next!=null)?"\n"+ next:"");
+            }
+            if (info instanceof Periodico){
+                return ((Periodico)info).imprimir() +((next!=null)?"\n"+ next:"");
+            }
             return info +((next!=null)?"\n"+ next:"");
         }
     }
