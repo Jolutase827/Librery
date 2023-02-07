@@ -31,6 +31,12 @@ public class Libro extends Publicacion{
 
     }
 
+    public void addEjemplares(int i){
+        for (int j =0; j<i;j++){
+            addEjemplar();
+        }
+    }
+
     public boolean replaceEjemplar(Ejemplar ejemplar){
         return ejemplares.replace(ejemplar,ejemplares.getposition(ejemplar));
     }

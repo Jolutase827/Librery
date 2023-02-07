@@ -30,6 +30,8 @@ public class Ejemplar {
         return false;
     }
 
+
+
     public Libro getLibro() {
         return libro;
     }

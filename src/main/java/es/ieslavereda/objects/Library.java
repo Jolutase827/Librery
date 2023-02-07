@@ -93,12 +93,18 @@ public class Library {
         return true;
     }
 
+    public void crearEjemplares(String isbn, int i){
+        Libro libro = getLibro(isbn);
+        libro.addEjemplares(i);
+        libros.replace(libro,libros.getposition(libro));
+    }
+
 
 
     public boolean prestamoLibro(String isbn, int codigoEjemplar, Cliente cliente){
         if (!cliente.aptoParaPedirLibro()||!clientes.contains(cliente)){
             if (existeLibro(isbn)){
-                Libro libro = libros.get(libros.getposition(passISBNtoLibro(isbn)));
+                Libro libro = getLibro(isbn);
                 if (libro.existeEjemplar(codigoEjemplar)){
                     Ejemplar ejemplar = libro.getEjemplar(codigoEjemplar);
                     cliente.prestar(ejemplar);
