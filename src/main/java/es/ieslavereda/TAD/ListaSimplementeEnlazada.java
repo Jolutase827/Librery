@@ -108,7 +108,6 @@ public class ListaSimplementeEnlazada<T> {
         if (position<0||position>=size){
             return null;
         } else {
-            int i =0;
             Nodo<T> aux = head;
             while (position>0){
                 aux = aux.getNext();
@@ -124,7 +123,7 @@ public class ListaSimplementeEnlazada<T> {
         } else {
             int i =0;
             Nodo<T> aux = head;
-            while (aux.getInfo()!=element){
+            while (!aux.getInfo().equals(element)){
                 i++;
                 aux = aux.getNext();
             }

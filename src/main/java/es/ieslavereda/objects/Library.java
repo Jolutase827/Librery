@@ -93,10 +93,13 @@ public class Library {
         return true;
     }
 
-    public void crearEjemplares(String isbn, int i){
-        Libro libro = getLibro(isbn);
-        libro.addEjemplares(i);
-        libros.replace(libro,libros.getposition(libro));
+    public boolean crearEjemplares(String isbn, int i){
+        if (libros.contains(passISBNtoLibro(isbn))) {
+            Libro libro = getLibro(isbn);
+            libro.addEjemplares(i);
+            return true;
+        }
+        return false;
     }
 
 
@@ -109,9 +112,6 @@ public class Library {
                     Ejemplar ejemplar = libro.getEjemplar(codigoEjemplar);
                     cliente.prestar(ejemplar);
                     ejemplar.addPrestamo(cliente);
-                    libro.replaceEjemplar(ejemplar);
-                    clientes.replace(cliente, clientes.getposition(cliente));
-                    libros.replace(libro,libros.getposition(libro));
                     return true;
                 }
             }

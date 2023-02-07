@@ -37,9 +37,6 @@ public class Libro extends Publicacion{
         }
     }
 
-    public boolean replaceEjemplar(Ejemplar ejemplar){
-        return ejemplares.replace(ejemplar,ejemplares.getposition(ejemplar));
-    }
     public Ejemplar getEjemplar(int codigoEjemplar){
         return ejemplares.get(ejemplares.getposition(new Ejemplar(this,codigoEjemplar)));
     }
