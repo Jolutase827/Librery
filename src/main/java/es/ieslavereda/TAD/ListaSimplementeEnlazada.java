@@ -50,6 +50,7 @@ public class ListaSimplementeEnlazada<T> {
                 if (aux1!=null) {
                     aux1.setPrevius(aux2);
                 }
+                size--;
                 return true;
             }
         }
@@ -68,7 +69,7 @@ public class ListaSimplementeEnlazada<T> {
             aux.setPrevius(null);
             head = aux;
         }
-
+        size--;
         return true;
     }
     public boolean removeTail(){
@@ -83,7 +84,7 @@ public class ListaSimplementeEnlazada<T> {
             aux.setNext(null);
             tail = aux;
         }
-
+        size--;
         return true;
     }
 

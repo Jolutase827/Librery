@@ -14,6 +14,7 @@ public class Main {
         System.out.println(library.altaPeriodico(p2));
         System.out.println(library.altaPeriodico(p3));
         System.out.println(library.altaPeriodico(p4));
+        System.out.println(library);
         System.out.println(library.bajaPeriodico(p2));
         System.out.println(library);
         System.out.println(library.bajaPeriodico(p1));
