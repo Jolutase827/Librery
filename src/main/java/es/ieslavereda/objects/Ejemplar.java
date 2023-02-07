@@ -4,7 +4,7 @@ import es.ieslavereda.TAD.ListaSimplementeEnlazada;
 
 public class Ejemplar {
 
-    private ListaSimplementeEnlazada<Prestamo> listaPrestamos;
+    private ListaSimplementeEnlazada<Prestamo<Cliente>> listaPrestamos;
     private Libro libro;
     private int codigoEjemplar;
 
@@ -15,25 +15,32 @@ public class Ejemplar {
         this.codigoEjemplar = codigoEjemplar;
     }
 
-//    public boolean notPrestado(){
-//        return false;
-//    }
+    public boolean notPrestado(){
+        if (listaPrestamos.get(0).isDevolution()){
+            return true;
+        }
+        return false;
+    }
 
-//    public boolean addPrestamo(Cliente cliente){
-//        if (listaPrestamos.isDevolution()){
-//            listaPrestamos.addHead(new Prestamo(cliente, listaPrestamos.getSize()+1));
-//        }
-//        return false;
-//    }
+    public boolean addPrestamo(Cliente cliente){
+        if (notPrestado()&&cliente.aptoParaPedirLibro()){
+            listaPrestamos.addHead(new Prestamo<Cliente>(cliente, listaPrestamos.getSize()+1));
+            return true;
+        }
+        return false;
+    }
 
     public Libro getLibro() {
         return libro;
     }
 
+    public int getCodigoEjemplar() {
+        return codigoEjemplar;
+    }
 
     @Override
     public String toString(){
-        return "Ejemplar{ \n ISBN: " + libro.getIsbn() +"\n Codigo de Ejemplar: " +codigoEjemplar+"\n"+((listaPrestamos.getSize()==0)?" Prestamos: Ejemplar no prestado":listaPrestamos)+"}\n";
+        return "Ejemplar{ \n ISBN: " + libro.getIsbn() +"\n Codigo de Ejemplar: " +codigoEjemplar+"}\n";
     }
 
     @Override

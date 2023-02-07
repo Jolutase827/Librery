@@ -9,7 +9,7 @@ public class Cliente {
 
     private boolean activo;
 
-    private ListaSimplementeEnlazada<Prestamo> prestamos;
+    private ListaSimplementeEnlazada<Prestamo<Ejemplar>> prestamos;
 
     public String getDni() {
         return dni;
@@ -32,6 +32,28 @@ public class Cliente {
         if (activo){
             activo = false;
             return true;
+        }
+        return false;
+    }
+
+    public boolean aptoParaPedirLibro(){
+        if (!activo){
+            int numeroDeLibrosSinDevolver=0;
+            for (int i=0;i<prestamos.getSize();i++){
+                if (!prestamos.get(i).isDevolution()){
+                    numeroDeLibrosSinDevolver++;
+                }
+            }
+            return numeroDeLibrosSinDevolver < 3;
+        }
+        return false;
+    }
+    public boolean prestar(Ejemplar ejemplar){
+        if (ejemplar.notPrestado()){
+            if (aptoParaPedirLibro()){
+                prestamos.addHead(new Prestamo<>(ejemplar,prestamos.getSize()));
+                return true;
+            }
         }
         return false;
     }

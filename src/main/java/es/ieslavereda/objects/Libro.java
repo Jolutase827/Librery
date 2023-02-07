@@ -19,7 +19,23 @@ public class Libro extends Publicacion{
         this.titulo = titulo;
         this.isbn = isbn;
         this.ejemplares = new ListaSimplementeEnlazada<>();
+    }
 
+    public boolean existeEjemplar(int codigoEjemplar){
+        Ejemplar ejemplar = new Ejemplar(this,codigoEjemplar);
+        for (int i =0; i<ejemplares.getSize();i++)
+            if (ejemplares.get(i).equals(ejemplar))
+                return true;
+
+        return false;
+
+    }
+
+    public boolean replaceEjemplar(Ejemplar ejemplar){
+        return ejemplares.replace(ejemplar,ejemplares.getposition(ejemplar));
+    }
+    public Ejemplar getEjemplar(int codigoEjemplar){
+        return ejemplares.get(ejemplares.getposition(new Ejemplar(this,codigoEjemplar)));
     }
 
     public String getIsbn() {
@@ -46,7 +62,7 @@ public class Libro extends Publicacion{
     public boolean equals(Object obj){
         if (obj instanceof Libro){
             Libro libro = (Libro) obj;
-            return libro.autor.equals(autor)&&libro.isbn.equals(isbn)&&libro.ejemplares.equals(ejemplares);
+            return libro.isbn.compareToIgnoreCase(isbn)==0;
         }
         return false;
     }

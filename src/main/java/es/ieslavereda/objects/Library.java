@@ -76,6 +76,54 @@ public class Library {
         revistas.remove(revistas.getposition(revista));
         return true;
     }
+
+    public boolean altaLibro(Libro libro){
+        if (!libros.contains(libro)){
+            libros.addHead(libro);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean bajaLibro(Libro libro){
+        if (!libros.contains(libro)){
+            return false;
+        }
+        libros.remove(libros.getposition(libro));
+        return true;
+    }
+
+
+
+    public boolean prestamoLibro(String isbn, int codigoEjemplar, Cliente cliente){
+        if (!cliente.aptoParaPedirLibro()||!clientes.contains(cliente)){
+            if (existeLibro(isbn)){
+                Libro libro = libros.get(libros.getposition(passISBNtoLibro(isbn)));
+                if (libro.existeEjemplar(codigoEjemplar)){
+                    Ejemplar ejemplar = libro.getEjemplar(codigoEjemplar);
+                    cliente.prestar(ejemplar);
+                    ejemplar.addPrestamo(cliente);
+                    libro.replaceEjemplar(ejemplar);
+                    clientes.replace(cliente, clientes.getposition(cliente));
+                    libros.replace(libro,libros.getposition(libro));
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    public Libro getLibro(String isbn){
+        return libros.get(libros.getposition(passISBNtoLibro(isbn)));
+    }
+    public Libro passISBNtoLibro(String isbn){
+        return new Libro("", 0, Publicacion.Color.ACOLOR, "", "", isbn);
+    }
+    public boolean existeLibro(String isbn){
+        return libros.getSize() != 0 && libros.contains(passISBNtoLibro(isbn));
+
+    }
     public ListaSimplementeEnlazada<Cliente> getClientes() {
         return clientes;
     }

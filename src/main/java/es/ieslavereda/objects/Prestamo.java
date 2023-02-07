@@ -2,16 +2,16 @@ package es.ieslavereda.objects;
 
 import java.util.Date;
 
-public class Prestamo {
+public class Prestamo<T> {
 
     private int codigoPrestamo;
-    private Cliente cliente;
+    private T element;
     private Date fprestamo;
 
     private Date fdevolucion;
 
-    public Prestamo(Cliente cliente, int codigoPrestamo){
-        this.cliente = cliente;
+    public Prestamo(T element, int codigoPrestamo){
+        this.element = element;
         this.codigoPrestamo = codigoPrestamo;
         fprestamo = new Date();
         fdevolucion = null;
@@ -24,7 +24,7 @@ public class Prestamo {
     @Override
     public String toString(){
         return "  Prestamo "+codigoPrestamo+"{ " +
-                "Cliente: "+cliente+
+                 element +
                 ", Fecha de prestamo: "+ fprestamo +
                 ((fdevolucion ==null)?"  No devuelto.}\n":" Fecha de devolución: "+ fdevolucion +"\n}");
     }
@@ -36,7 +36,7 @@ public class Prestamo {
             return (prestamo1.codigoPrestamo==codigoPrestamo
                     &&prestamo1.fprestamo.equals(fprestamo)
                     &&prestamo1.fdevolucion.equals(fdevolucion)
-                    &&prestamo1.cliente.equals(cliente));
+                    &&prestamo1.element.equals(element));
         }
         return false;
     }
