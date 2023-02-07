@@ -18,7 +18,7 @@ public class Revista extends Publicacion{
     }
 
     @Override
-    public String imprimir(){
+    public String toString(){
         return "Revista{ Nombre: "+ nombre+", Fecha de publicación: " + diaPublicacion+"\n";
     }
 

@@ -1,6 +1,7 @@
 package es.ieslavereda.objects;
 
-import es.ieslavereda.TAD.EjemplaresTAD;
+
+import es.ieslavereda.TAD.ListaSimplementeEnlazada;
 
 public class Cliente {
     private String nombre;
@@ -8,7 +9,7 @@ public class Cliente {
 
     private boolean activo;
 
-    private EjemplaresTAD ejemplares;
+    private ListaSimplementeEnlazada<Prestamo> prestamos;
 
     public String getDni() {
         return dni;
@@ -17,7 +18,7 @@ public class Cliente {
     public Cliente(String nombre, String dni){
         this.dni = dni;
         this.nombre =nombre;
-        this.ejemplares = new EjemplaresTAD();
+        this.prestamos = new ListaSimplementeEnlazada<>();
         activo = true;
     }
 
@@ -46,12 +47,12 @@ public class Cliente {
 
 
     public boolean llegaLimitePedidos(){
-        return ejemplares.getSize()>=3;
+        return false;
     }
 
     @Override
     public String toString(){
-        return " Cliente{ Nombre: "+nombre+", DNI: "+dni+"}\n";
+        return " Cliente{ Nombre: "+nombre+", DNI: "+dni+", Activo: "+ activo  +"}\n";
     }
     @Override
     public boolean equals(Object obj){

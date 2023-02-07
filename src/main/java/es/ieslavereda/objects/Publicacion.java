@@ -1,6 +1,6 @@
 package es.ieslavereda.objects;
 
-public abstract class Publicacion implements IPublicacion{
+public abstract class Publicacion {
     private String editorial;
     private int numeroPaginas;
     private Color color;
@@ -28,34 +28,10 @@ public abstract class Publicacion implements IPublicacion{
         return " Editorial: "+ editorial+"\n Numero de paginas: "+ numeroPaginas + "\n Color: "+ color +"\n";
     }
 
-    @Override
-    public abstract String imprimir();
 
-    @Override
-    public boolean equals(Object obj){
-        if (obj instanceof Publicacion) {
-            Publicacion publicacion =(Publicacion) obj;
-            if (publicacion.color.equals(color)&&publicacion.editorial.equals(editorial)&&publicacion.numeroPaginas==numeroPaginas) {
-                if (obj instanceof Libro) {
-                    Libro libro = (Libro) this;
-                    return libro.equals(obj);
-                }
-                if (obj instanceof Periodico) {
-                    Periodico periodico = (Periodico) this;
-                    return periodico.equals(obj);
-                }
-                if (obj instanceof Revista) {
-                    Revista revista = (Revista) this;
-                    return revista.equals(obj);
-                }
-            }
-            return false;
-        }
-        return false;
-    }
 
-    enum Color{
-        COLOR("color"),
+    public enum Color{
+        ACOLOR("color"),
         BLANCO_Y_NEGRO("blanco y negro");
 
         private String atribute;

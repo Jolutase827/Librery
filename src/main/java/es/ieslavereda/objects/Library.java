@@ -1,71 +1,94 @@
 package es.ieslavereda.objects;
 
-import es.ieslavereda.TAD.ClienteTAD;
-import es.ieslavereda.TAD.PublicacionTAD;
+import es.ieslavereda.TAD.ListaSimplementeEnlazada;
 
 public class Library {
-    private PublicacionTAD libros;
-    private PublicacionTAD revistas;
+    private ListaSimplementeEnlazada<Libro> libros;
+    private ListaSimplementeEnlazada<Revista> revistas;
 
-    private PublicacionTAD periodicos;
+    private ListaSimplementeEnlazada<Periodico> periodicos;
 
-    private ClienteTAD clientes;
+    private ListaSimplementeEnlazada<Cliente> clientes;
 
     public Library(){
-        libros = new PublicacionTAD();
-        revistas = new PublicacionTAD();
-        periodicos = new PublicacionTAD();
-        clientes = new ClienteTAD();
+        libros = new ListaSimplementeEnlazada<>();
+        revistas = new ListaSimplementeEnlazada<>();
+        periodicos = new ListaSimplementeEnlazada<>();
+        clientes = new ListaSimplementeEnlazada<>();
     }
 
-    public void altaCliente(Cliente cliente){
-        clientes.altaCliente(cliente);
+    public boolean altaCliente(Cliente cliente){
+        if (clientes.contains(cliente)){
+            cliente = clientes.get(clientes.getposition(cliente));
+            if (cliente.darAlta()){
+                clientes.replace(cliente,clientes.getposition(cliente));
+                return true;
+            }
+           return false;
+        }else {
+            clientes.addHead(cliente);
+            return true;
+        }
     }
 
-    public boolean altaPublicacion(Publicacion publicacion){
-        if (publicacion instanceof Libro){
-            libros.addHead(publicacion);
-            return true;
+    public boolean bajaCliente(Cliente cliente){
+        if (!clientes.contains(cliente)){
+            return false;
+        }else {
+            int posicionCliente = clientes.getposition(cliente);
+            cliente = clientes.get(posicionCliente);
+            if (cliente.darBaja()){
+                clientes.replace(cliente,posicionCliente);
+                return true;
+            }
+            return false;
         }
-        if (publicacion instanceof Periodico){
-            periodicos.addHead(publicacion);
-            return true;
-        }
-        if (publicacion instanceof Revista){
-            revistas.addHead(publicacion);
+    }
+
+    public boolean altaPeriodico(Periodico periodico){
+        if (!periodicos.contains(periodico)){
+            periodicos.addHead(periodico);
             return true;
         }
         return false;
     }
 
-    public boolean bajaPublicacion(Publicacion publicacion){
-        if (publicacion instanceof Libro){
-            return libros.bajaPublicacion(publicacion);
-
+    public boolean bajaPeriodico(Periodico periodico){
+        if (!periodicos.contains(periodico)){
+            return false;
         }
-        if (publicacion instanceof Periodico){
-            return periodicos.bajaPublicacion(publicacion);
+        periodicos.remove(periodicos.getposition(periodico));
+        return true;
+    }
 
-        }
-        if (publicacion instanceof Revista){
-            return revistas.bajaPublicacion(publicacion);
+    public boolean altaRevista(Revista revista){
+        if (!revistas.contains(revista)){
+            revistas.addHead(revista);
+            return true;
         }
         return false;
     }
 
-    public ClienteTAD getClientes() {
+    public boolean bajaRevista(Revista revista){
+        if (!revistas.contains(revista)){
+            return false;
+        }
+        revistas.remove(revistas.getposition(revista));
+        return true;
+    }
+    public ListaSimplementeEnlazada<Cliente> getClientes() {
         return clientes;
     }
 
-    public PublicacionTAD getLibros() {
+    public ListaSimplementeEnlazada<Libro> getLibros() {
         return libros;
     }
 
-    public PublicacionTAD getPeriodicos() {
+    public ListaSimplementeEnlazada<Periodico> getPeriodicos() {
         return periodicos;
     }
 
-    public PublicacionTAD getRevistas() {
+    public ListaSimplementeEnlazada<Revista> getRevistas() {
         return revistas;
     }
 

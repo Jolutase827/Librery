@@ -1,6 +1,5 @@
 package es.ieslavereda.objects;
-import com.sun.org.apache.bcel.internal.generic.FADD;
-import es.ieslavereda.TAD.EjemplaresTAD;
+import es.ieslavereda.TAD.ListaSimplementeEnlazada;
 
 public class Libro extends Publicacion{
 
@@ -10,7 +9,7 @@ public class Libro extends Publicacion{
 
     private String isbn;
 
-    private EjemplaresTAD ejemplares;
+    private ListaSimplementeEnlazada<Ejemplar> ejemplares;
 
 
     public Libro(String editorial, int numeroPaginas, Color color, String autor, String titulo,String isbn){
@@ -19,7 +18,7 @@ public class Libro extends Publicacion{
         this.autor = autor;
         this.titulo = titulo;
         this.isbn = isbn;
-        this.ejemplares = new EjemplaresTAD();
+        this.ejemplares = new ListaSimplementeEnlazada<>();
 
     }
 
@@ -27,7 +26,7 @@ public class Libro extends Publicacion{
         return isbn;
     }
 
-    public EjemplaresTAD getEjemplares() {
+    public ListaSimplementeEnlazada<Ejemplar> getEjemplares() {
         return ejemplares;
     }
 
@@ -43,10 +42,6 @@ public class Libro extends Publicacion{
                 " Autor:"+autor+ "\n Titulo: " + titulo + "\n ISBN: " + isbn+"\n "+ejemplares.toString();
     }
 
-    @Override
-    public String imprimir(){
-        return ejemplares.imprimir();
-    }
     @Override
     public boolean equals(Object obj){
         if (obj instanceof Libro){

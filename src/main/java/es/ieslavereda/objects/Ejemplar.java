@@ -1,32 +1,30 @@
 package es.ieslavereda.objects;
 
-import es.ieslavereda.TAD.PrestamosTAD;
+import es.ieslavereda.TAD.ListaSimplementeEnlazada;
 
 public class Ejemplar {
 
-    private PrestamosTAD listaPrestamos;
+    private ListaSimplementeEnlazada<Prestamo> listaPrestamos;
     private Libro libro;
-
-
     private int codigoEjemplar;
 
 
     public Ejemplar(Libro libro, int codigoEjemplar){
         this.libro = libro;
-        this.listaPrestamos = new PrestamosTAD();
+        this.listaPrestamos = new ListaSimplementeEnlazada<>();
         this.codigoEjemplar = codigoEjemplar;
     }
 
-    public boolean notPrestado(){
-        return listaPrestamos.isDevolution();
-    }
+//    public boolean notPrestado(){
+//        return false;
+//    }
 
-    public boolean addPrestamo(Cliente cliente){
-        if (listaPrestamos.isDevolution()){
-            listaPrestamos.addHead(new Prestamo(cliente, listaPrestamos.getSize()+1));
-        }
-        return false;
-    }
+//    public boolean addPrestamo(Cliente cliente){
+//        if (listaPrestamos.isDevolution()){
+//            listaPrestamos.addHead(new Prestamo(cliente, listaPrestamos.getSize()+1));
+//        }
+//        return false;
+//    }
 
     public Libro getLibro() {
         return libro;
@@ -38,10 +36,6 @@ public class Ejemplar {
         return "Ejemplar{ \n ISBN: " + libro.getIsbn() +"\n Codigo de Ejemplar: " +codigoEjemplar+"\n"+((listaPrestamos.getSize()==0)?" Prestamos: Ejemplar no prestado":listaPrestamos)+"}\n";
     }
 
-
-    public String imprimir(){
-        return "Ejemplar{ \n ISBN: " +libro.getIsbn() +"\n Codigo de Ejemplar: " + codigoEjemplar+"}";
-    }
     @Override
     public boolean equals(Object obj){
         if (obj instanceof Ejemplar){

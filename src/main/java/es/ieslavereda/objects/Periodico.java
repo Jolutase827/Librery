@@ -14,7 +14,7 @@ public class Periodico extends Publicacion{
     }
 
     @Override
-    public String imprimir(){
+    public String toString(){
         return "Periodico{ Nombre: "+ nombre + ", Fecha de publicación: "+ diaPublicacion;
     }
     @Override
