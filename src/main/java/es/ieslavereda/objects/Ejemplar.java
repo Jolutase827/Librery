@@ -15,7 +15,7 @@ public class Ejemplar {
         this.codigoEjemplar = codigoEjemplar;
     }
 
-    public boolean notPrestado(){
+    public boolean prestado(){
         if (listaPrestamos.getSize()>0) {
             return listaPrestamos.get(0).isDevolution();
         }
@@ -23,14 +23,16 @@ public class Ejemplar {
     }
 
     public boolean addPrestamo(Cliente cliente){
-        if (notPrestado()&&cliente.aptoParaPedirLibro()){
+        if (!prestado()&&cliente.aptoParaPedirLibro()){
             listaPrestamos.addHead(new Prestamo<Cliente>(cliente, listaPrestamos.getSize()+1));
             return true;
         }
         return false;
     }
 
-
+    public ListaSimplementeEnlazada<Prestamo<Cliente>> getListaPrestamos() {
+        return listaPrestamos;
+    }
 
     public Libro getLibro() {
         return libro;
@@ -42,7 +44,7 @@ public class Ejemplar {
 
     @Override
     public String toString(){
-        return "Ejemplar{ \n ISBN: " + libro.getIsbn() +"\n Codigo de Ejemplar: " +codigoEjemplar+"+\n Lista de Prestamos Clientes: "+ listaPrestamos+ "}\n";
+        return "\n Ejemplar{ ISBN: " + libro.getIsbn() +" Codigo de Ejemplar: " +codigoEjemplar+"}\n";
     }
 
     @Override

@@ -49,9 +49,9 @@ public class Cliente {
         return false;
     }
     public boolean prestar(Ejemplar ejemplar){
-        if (ejemplar.notPrestado()){
+        if (!ejemplar.prestado()){
             if (aptoParaPedirLibro()){
-                prestamos.addHead(new Prestamo<>(ejemplar,prestamos.getSize()));
+                prestamos.addHead(new Prestamo<>(ejemplar,prestamos.getSize()+1));
                 return true;
             }
         }

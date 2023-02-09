@@ -110,9 +110,7 @@ public class Library {
                 Libro libro = getLibro(isbn);
                 if (libro.existeEjemplar(codigoEjemplar)){
                     Ejemplar ejemplar = libro.getEjemplar(codigoEjemplar);
-                    cliente.prestar(ejemplar);
-                    ejemplar.addPrestamo(cliente);
-                    return true;
+                    return cliente.prestar(ejemplar) && ejemplar.addPrestamo(cliente);
                 }
             }
         }
@@ -124,9 +122,6 @@ public class Library {
         return libros.get(libros.getposition(passISBNtoLibro(isbn)));
     }
 
-    public boolean replaceEjemplarBiblioteca(Ejemplar ejemplar){
-        return libros.get(libros.getposition(ejemplar.getLibro())).replaceEjemplar(ejemplar);
-    }
     public Libro passISBNtoLibro(String isbn){
         return new Libro("", 0, Publicacion.Color.ACOLOR, "", "", isbn);
     }
