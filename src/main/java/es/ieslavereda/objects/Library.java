@@ -105,7 +105,7 @@ public class Library {
 
 
     public boolean prestamoLibro(String isbn, int codigoEjemplar, Cliente cliente){
-        if (!cliente.aptoParaPedirLibro()||!clientes.contains(cliente)){
+        if (cliente.aptoParaPedirLibro()||clientes.contains(cliente)){
             if (existeLibro(isbn)){
                 Libro libro = getLibro(isbn);
                 if (libro.existeEjemplar(codigoEjemplar)){
@@ -122,6 +122,10 @@ public class Library {
 
     public Libro getLibro(String isbn){
         return libros.get(libros.getposition(passISBNtoLibro(isbn)));
+    }
+
+    public boolean replaceEjemplarBiblioteca(Ejemplar ejemplar){
+        return libros.get(libros.getposition(ejemplar.getLibro())).replaceEjemplar(ejemplar);
     }
     public Libro passISBNtoLibro(String isbn){
         return new Libro("", 0, Publicacion.Color.ACOLOR, "", "", isbn);

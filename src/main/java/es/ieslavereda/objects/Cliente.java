@@ -37,7 +37,7 @@ public class Cliente {
     }
 
     public boolean aptoParaPedirLibro(){
-        if (!activo){
+        if (activo){
             int numeroDeLibrosSinDevolver=0;
             for (int i=0;i<prestamos.getSize();i++){
                 if (!prestamos.get(i).isDevolution()){
@@ -67,6 +67,9 @@ public class Cliente {
         return true;
     }
 
+    public ListaSimplementeEnlazada<Prestamo<Ejemplar>> getPrestamos() {
+        return prestamos;
+    }
 
     public boolean llegaLimitePedidos(){
         return false;
@@ -74,7 +77,7 @@ public class Cliente {
 
     @Override
     public String toString(){
-        return " Cliente{ Nombre: "+nombre+", DNI: "+dni+", Activo: "+ activo  +"}\n";
+        return " Cliente{ Nombre: "+nombre+", DNI: "+dni+", Activo: "+ activo +"\n Prestamos: "+ prestamos  +"}\n";
     }
     @Override
     public boolean equals(Object obj){

@@ -16,8 +16,8 @@ public class Ejemplar {
     }
 
     public boolean notPrestado(){
-        if (listaPrestamos.get(0).isDevolution()){
-            return true;
+        if (listaPrestamos.getSize()>0) {
+            return listaPrestamos.get(0).isDevolution();
         }
         return false;
     }
@@ -42,14 +42,14 @@ public class Ejemplar {
 
     @Override
     public String toString(){
-        return "Ejemplar{ \n ISBN: " + libro.getIsbn() +"\n Codigo de Ejemplar: " +codigoEjemplar+"}\n";
+        return "Ejemplar{ \n ISBN: " + libro.getIsbn() +"\n Codigo de Ejemplar: " +codigoEjemplar+"+\n Lista de Prestamos Clientes: "+ listaPrestamos+ "}\n";
     }
 
     @Override
     public boolean equals(Object obj){
         if (obj instanceof Ejemplar){
             Ejemplar ej = (Ejemplar) obj;
-            return ej.libro.equals(this.libro)&&ej.codigoEjemplar==this.codigoEjemplar&&ej.listaPrestamos.equals(listaPrestamos);
+            return ej.libro.equals(this.libro)&&ej.codigoEjemplar==this.codigoEjemplar;
         }
         return false;
     }
