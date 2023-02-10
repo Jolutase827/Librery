@@ -17,6 +17,15 @@ public class Prestamo<T> {
         fdevolucion = null;
     }
 
+    public T getElement(){
+        return element;
+    }
+
+
+    public void devolution(){
+        fdevolucion = new Date();
+    }
+
     public boolean isDevolution(){
         return (fdevolucion!=null);
     }

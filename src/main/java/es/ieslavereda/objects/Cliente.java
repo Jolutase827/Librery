@@ -36,6 +36,27 @@ public class Cliente {
         return false;
     }
 
+    public boolean hasEjemplar(Ejemplar ejemplar){
+        if (prestamos.getSize()>0){
+            for (int i = 0;i<prestamos.getSize();i++){
+                if (prestamos.get(i).getElement().equals(ejemplar)){
+                    return !prestamos.get(i).isDevolution();
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean devolver(Ejemplar ejemplar){
+        for (int i = 0;i<prestamos.getSize();i++){
+            if (prestamos.get(i).getElement().equals(ejemplar)){
+                prestamos.get(i).devolution();
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean aptoParaPedirLibro(){
         if (activo){
             int numeroDeLibrosSinDevolver=0;
@@ -65,9 +86,6 @@ public class Cliente {
         return prestamos;
     }
 
-    public boolean llegaLimitePedidos(){
-        return false;
-    }
 
     @Override
     public String toString(){

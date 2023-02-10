@@ -122,7 +122,26 @@ public class Library {
         return false;
     }
 
+    public boolean devolverLibro(String isbn, int codigoEjemplar, Cliente cliente){
+        if (existeEjemplar(isbn,codigoEjemplar)){
+            Ejemplar ejemplar = getLibro(isbn).getEjemplar(codigoEjemplar);
+            if (cliente.hasEjemplar(ejemplar)&&!ejemplar.notPrestado()){
+                cliente.devolver(ejemplar);
 
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean existeEjemplar(String isbn, int codigoEjemplar){
+        if (existeLibro(isbn)){
+            return getLibro(isbn).existeEjemplar(codigoEjemplar);
+        }
+        return false;
+
+    }
     public Libro getLibro(String isbn){
         return libros.get(libros.getposition(passISBNtoLibro(isbn)));
     }

@@ -26,6 +26,16 @@ public class Ejemplar {
         listaPrestamos.addHead(new Prestamo<Cliente>(cliente, listaPrestamos.getSize()+1));
     }
 
+    public boolean devolver(Cliente cliente){
+        for (int i = 0;i<listaPrestamos.getSize();i++){
+            if (listaPrestamos.get(i).getElement().equals(cliente)){
+                listaPrestamos.get(i).devolution();
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ListaSimplementeEnlazada<Prestamo<Cliente>> getListaPrestamos() {
         return listaPrestamos;
     }
