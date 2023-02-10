@@ -105,12 +105,17 @@ public class Library {
 
 
     public boolean prestamoLibro(String isbn, int codigoEjemplar, Cliente cliente){
-        if (cliente.aptoParaPedirLibro()||clientes.contains(cliente)){
+        if (cliente.aptoParaPedirLibro()&&clientes.contains(cliente)){
             if (existeLibro(isbn)){
                 Libro libro = getLibro(isbn);
                 if (libro.existeEjemplar(codigoEjemplar)){
                     Ejemplar ejemplar = libro.getEjemplar(codigoEjemplar);
-                    return cliente.prestar(ejemplar) && ejemplar.addPrestamo(cliente);
+                    if (cliente.aptoParaPedirLibro()&&ejemplar.notPrestado()) {
+                         cliente.prestar(ejemplar);
+                         ejemplar.addPrestamo(cliente);
+                         return true;
+                    }
+                    return false;
                 }
             }
         }

@@ -22,8 +22,9 @@ public class Main {
 
         library.altaCliente(c1);
         System.out.println(library.prestamoLibro("3",2,c1));
+        System.out.println(library.prestamoLibro("3",2,c1));
         System.out.println(library.prestamoLibro("1",2,c1));
-        System.out.println(library.prestamoLibro("2",2,c1));
+        System.out.println(library.prestamoLibro("2",0,c1));
         System.out.println(library.prestamoLibro("4",2,c1));
         System.out.println(library.prestamoLibro("5",2,c1));
         System.out.println(library.prestamoLibro("3",1,c1));

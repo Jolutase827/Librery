@@ -48,14 +48,8 @@ public class Cliente {
         }
         return false;
     }
-    public boolean prestar(Ejemplar ejemplar){
-        if (!ejemplar.prestado()){
-            if (aptoParaPedirLibro()){
-                prestamos.addHead(new Prestamo<>(ejemplar,prestamos.getSize()+1));
-                return true;
-            }
-        }
-        return false;
+    public void prestar(Ejemplar ejemplar){
+        prestamos.addHead(new Prestamo<>(ejemplar,prestamos.getSize()+1));
     }
 
 
@@ -77,7 +71,8 @@ public class Cliente {
 
     @Override
     public String toString(){
-        return " Cliente{ Nombre: "+nombre+", DNI: "+dni+", Activo: "+ activo +"\n Prestamos: "+ prestamos  +"}\n";
+        return " Cliente{ Nombre: "+nombre+", DNI: "+dni+", Activo: "+ activo +"}\n";
+        //\n Prestamos: "+ prestamos  +"
     }
     @Override
     public boolean equals(Object obj){
