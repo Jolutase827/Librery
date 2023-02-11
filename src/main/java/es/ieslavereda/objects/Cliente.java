@@ -96,7 +96,7 @@ public class Cliente {
     public boolean equals(Object obj){
         if (obj instanceof Cliente){
             Cliente cliente = (Cliente) obj;
-            return this.nombre.equals(cliente.nombre)&&this.dni.equals(cliente.dni);
+            return this.dni.equals(cliente.dni);
         }
         return false;
     }

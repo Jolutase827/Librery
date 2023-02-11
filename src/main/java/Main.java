@@ -26,11 +26,15 @@ public class Main {
         System.out.println(library.prestamoLibro("1",2,c1));
         System.out.println(library.prestamoLibro("2",0,c1));
         System.out.println(library.prestamoLibro("4",2,c1));
-        System.out.println(library.prestamoLibro("5",2,c1));
-        System.out.println(library.prestamoLibro("3",1,c1));
-        System.out.println(library.prestamoLibro("3",2,c1));
-
         System.out.println(library);
+        System.out.println("---------------------------");
+        System.out.println(library.devolverLibro("3",2,c1));
+        System.out.println(library.devolverLibro("2",0,c1));
+        System.out.println(library.devolverLibro("3",2,c1));
+        System.out.println(library.devolverLibro("1",2,c1));
+        System.out.println("---------------------");
+        System.out.println(library);
+
 
     }
 }

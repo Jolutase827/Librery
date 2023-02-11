@@ -20,11 +20,7 @@ public class Library {
     public boolean altaCliente(Cliente cliente){
         if (clientes.contains(cliente)){
             cliente = clientes.get(clientes.getposition(cliente));
-            if (cliente.darAlta()){
-                clientes.replace(cliente,clientes.getposition(cliente));
-                return true;
-            }
-           return false;
+            return cliente.darAlta();
         }else {
             clientes.addHead(cliente);
             return true;
@@ -37,11 +33,7 @@ public class Library {
         }else {
             int posicionCliente = clientes.getposition(cliente);
             cliente = clientes.get(posicionCliente);
-            if (cliente.darBaja()){
-                clientes.replace(cliente,posicionCliente);
-                return true;
-            }
-            return false;
+            return cliente.darBaja();
         }
     }
 
@@ -127,7 +119,7 @@ public class Library {
             Ejemplar ejemplar = getLibro(isbn).getEjemplar(codigoEjemplar);
             if (cliente.hasEjemplar(ejemplar)&&!ejemplar.notPrestado()){
                 cliente.devolver(ejemplar);
-
+                ejemplar.devolver(cliente);
                 return true;
             }
         }
