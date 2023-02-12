@@ -197,7 +197,7 @@ public class ListaSimplementeEnlazada<T> {
 
     @Override
     public String toString() {
-        return " Cantidad: " + size + "\n Elementos: " + head;
+        return " Cantidad: " + size + "\n Elementos: \n" + head;
     }
 
     public String imprimir() {

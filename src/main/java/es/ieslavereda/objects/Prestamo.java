@@ -32,10 +32,10 @@ public class Prestamo<T> {
 
     @Override
     public String toString(){
-        return "  Prestamo "+codigoPrestamo+"{ " +
+        return "  Prestamo "+codigoPrestamo+"{\n" +
                  element +
-                ", Fecha de prestamo: "+ fprestamo +
-                ((fdevolucion ==null)?"  No devuelto.}\n":" Fecha de devolución: "+ fdevolucion +"\n}");
+                "\n Fecha de prestamo: "+ fprestamo +
+                ((fdevolucion ==null)?"  No devuelto.}\n":" Fecha de devolución: "+ fdevolucion +"}\n");
     }
 
     @Override

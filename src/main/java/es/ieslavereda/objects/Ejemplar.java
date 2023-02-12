@@ -50,7 +50,7 @@ public class Ejemplar {
 
     @Override
     public String toString(){
-        return "\n Ejemplar{ ISBN: " + libro.getIsbn() +" Codigo de Ejemplar: " +codigoEjemplar+ " Prestamos: " + listaPrestamos+ "}\n";
+        return "Ejemplar{ ISBN: " + libro.getIsbn() +" Codigo de Ejemplar: " +codigoEjemplar+ " }";
     }
 
     @Override

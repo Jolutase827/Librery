@@ -103,8 +103,8 @@ public class Cliente {
 
     @Override
     public String toString(){
-        return " Cliente{ Nombre: "+nombre+", DNI: "+dni+", Activo: "+ activo +"}\n";
-        //\n Prestamos: "+ prestamos  +"
+        return " Cliente{ Nombre: "+nombre+", DNI: "+dni+", Activo: "+ activo +"}";
+
     }
     @Override
     public boolean equals(Object obj){

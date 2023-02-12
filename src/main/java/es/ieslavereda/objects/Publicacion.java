@@ -25,7 +25,7 @@ public abstract class Publicacion {
 
     @Override
     public String toString(){
-        return " Editorial: "+ editorial+"\n Numero de paginas: "+ numeroPaginas + "\n Color: "+ color +"\n";
+        return " Editorial: "+ editorial+", Numero de paginas: "+ numeroPaginas + ", Color: "+ color;
     }
 
 

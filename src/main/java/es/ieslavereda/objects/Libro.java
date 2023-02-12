@@ -58,8 +58,7 @@ public class Libro extends Publicacion{
 
     @Override
     public String toString(){
-        return "Libro{\n"+super.toString()+
-                " Autor:"+autor+ "\n Titulo: " + titulo + "\n ISBN: " + isbn+"\n "+ejemplares.toString();
+        return "Libro{"+super.toString()+ " Autor:"+autor+ " Titulo: " + titulo + " ISBN: " + isbn+"}";
     }
 
     @Override
