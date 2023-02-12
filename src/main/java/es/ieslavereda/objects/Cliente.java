@@ -11,15 +11,25 @@ public class Cliente {
 
     private ListaSimplementeEnlazada<Prestamo<Ejemplar>> prestamos;
 
-    public String getDni() {
-        return dni;
-    }
+
 
     public Cliente(String nombre, String dni){
         this.dni = dni;
         this.nombre =nombre;
         this.prestamos = new ListaSimplementeEnlazada<>();
         activo = true;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDni() {
+        return dni;
     }
 
     public void cambiarNombreyDNi(String dni,String nombre) {
@@ -45,6 +55,10 @@ public class Cliente {
             }
         }
         return false;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public boolean devolver(Ejemplar ejemplar){

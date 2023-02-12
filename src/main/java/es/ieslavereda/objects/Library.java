@@ -86,7 +86,7 @@ public class Library {
     }
 
     public boolean crearEjemplares(String isbn, int i){
-        if (libros.contains(passISBNtoLibro(isbn))) {
+        if (libros.contains(passISBNtoLibro(isbn))&&i>-1) {
             Libro libro = getLibro(isbn);
             libro.addEjemplares(i);
             return true;
@@ -126,6 +126,15 @@ public class Library {
         return false;
     }
 
+    public boolean modificarDatosCliente(Cliente c1, String dniNuevo, String nombre){
+        if (clientes.contains(c1)){
+            clientes.get(clientes.getposition(c1)).setDni(dniNuevo);
+            clientes.get(clientes.getposition(c1)).setNombre(nombre);
+            return true;
+        }
+        return false;
+    }
+
 
     public boolean existeEjemplar(String isbn, int codigoEjemplar){
         if (existeLibro(isbn)){
@@ -144,6 +153,9 @@ public class Library {
     public boolean existeLibro(String isbn){
         return libros.getSize() != 0 && libros.contains(passISBNtoLibro(isbn));
 
+    }
+    public Cliente getCliente(String dni){
+        return clientes.get(clientes.getposition(new Cliente("",dni)));
     }
     public ListaSimplementeEnlazada<Cliente> getClientes() {
         return clientes;

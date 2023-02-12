@@ -21,7 +21,7 @@ public class Periodico extends Publicacion{
     public boolean equals(Object obj){
         if (obj instanceof Periodico){
             Periodico periodico = (Periodico) obj;
-            return periodico.nombre.equals(nombre)&&periodico.diaPublicacion.equals(diaPublicacion);
+            return periodico.nombre.equals(nombre);
         }
         return false;
     }

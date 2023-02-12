@@ -1,40 +1,47 @@
-import es.ieslavereda.TAD.ListaSimplementeEnlazada;
 import es.ieslavereda.objects.*;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         Library library = new Library();
-        Libro l1 = new Libro("ManuPed",20, Publicacion.Color.ACOLOR,"Nelson","Como me chingue una ARAÑA", "1");
-        Libro l2 = new Libro("ManuPed",20, Publicacion.Color.ACOLOR,"Ivan","Como me mato una ARAÑA","2");
-        Libro l3 = new Libro("ManuPed",20, Publicacion.Color.ACOLOR,"Matias","Como me acuchilló una ARAÑA","3");
-        Libro l4 = new Libro("ManuPed",20, Publicacion.Color.ACOLOR,"Gabriel","Como me maltrató una ARAÑA","4");
-        Cliente c1 = new Cliente("JoseLuis","1234");
-        library.altaLibro(l1);
-        library.altaLibro(l2);
-        library.altaLibro(l3);
-        library.altaLibro(l4);
-        library.crearEjemplares("1",1);
-        library.crearEjemplares("3",3);
-        library.crearEjemplares("5",2);
-        library.crearEjemplares("2",  1);
-        library.crearEjemplares("4",4);
-        library.crearEjemplares("1",3);
-
-        library.altaCliente(c1);
-        System.out.println(library.prestamoLibro("3",2,c1));
-        System.out.println(library.prestamoLibro("3",2,c1));
-        System.out.println(library.prestamoLibro("1",2,c1));
-        System.out.println(library.prestamoLibro("2",0,c1));
-        System.out.println(library.prestamoLibro("4",2,c1));
-        System.out.println(library);
-        System.out.println("---------------------------");
-        System.out.println(library.devolverLibro("3",2,c1));
-        System.out.println(library.devolverLibro("2",0,c1));
-        System.out.println(library.devolverLibro("3",2,c1));
-        System.out.println(library.devolverLibro("1",2,c1));
-        System.out.println("---------------------");
-        System.out.println(library);
-
-
+        String valor="";
+        System.out.println("Bienvenido a la \"Libreria Tarraga Segura!!!");
+        while (!valor.equals("-1")){
+            System.out.println("Que quieres hacer?");
+            System.out.println("[1] Revisar las estanterias.");
+            System.out.println("[2] Hacer acciones.");
+            System.out.println("[-1] Salir de la aplicación.");
+            valor = sc.nextLine();
+            while (!valor.equals("1")&&!valor.equals("2")&&!valor.equals("-1")){
+                System.out.println("Escribe lo de los corchetes: ");
+                System.out.println("[1] Revisar las estanterias.");
+                System.out.println("[2] Actuar sobre la biblioteca.");
+                System.out.println("[-1] Salir de la aplicación.");
+                valor = sc.nextLine();
+            }
+            if(valor.equals("1")){
+                Impresora.revisarEstanteria(library);
+            }
+            if (valor.equals("2")){
+               library = ModificadorDeDatos.hacerCosas(library);
+            }
+        }
     }
+
+
+
+
+
+
+
+
+    public static void borrarPantalla(){
+        for (int i =0; i<30;i++){
+            System.out.println();
+        }
+    }
+
+
 }

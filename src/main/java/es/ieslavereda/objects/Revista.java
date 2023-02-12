@@ -26,12 +26,12 @@ public class Revista extends Publicacion{
     public boolean equals(Object obj){
         if (obj instanceof Revista){
             Revista revista = (Revista) obj;
-            return revista.nombre.equals(nombre)&&revista.tematica.equals(tematica)&&revista.periodicidad.equals(periodicidad)&&revista.diaPublicacion.equals(diaPublicacion);
+            return revista.nombre.equals(nombre)&&revista.tematica.equals(tematica)&&revista.periodicidad.equals(periodicidad);
         }
         return false;
     }
 
-    enum Periodicidad{
+    public enum Periodicidad{
         SEMANAL,
         MENSUAL,
         TRIMESTRAL;
